@@ -184,7 +184,7 @@ app.route("/api", api);
 // Fallback to index.html for SPA
 app.get("*", serveStatic({ path: "./public/index.html" }));
 
-const port = parseInt(process.env.PORT || "3005");
+const port = parseInt(process.env.PORT || "3002");
 
 console.log(`
 🔥 Bisaya Ipsum API running!

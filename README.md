@@ -9,7 +9,7 @@ bun install
 bun run dev
 ```
 
-Go to http://localhost:3000
+Go to http://localhost:3002
 
 ## API
 
@@ -34,7 +34,7 @@ POST works too:
 
 ## Deploy
 
-Works on Vercel. Just connect the repo.
+Push to main → GitHub Actions builds and pushes to ghcr.io → Pull from Dockge
 
 ## Add words
 
