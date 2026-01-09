@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bisaya Ipsum | Yawa Generator</title>
+    <meta name="description" content="Generate Bisaya/Cebuano placeholder text. Lorem Ipsum pero Bisaya style, bay!">
+    <meta property="og:title" content="Bisaya Ipsum - Yawa Generator">
+    <meta property="og:description" content="Placeholder text para sa mga Bisaya! Yawa ka man pud!">
+    <meta name="theme-color" content="#1a1a2e">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --yellow: #FFD93D;
+            --orange: #FF6B35;
+            --pink: #FF006E;
+            --blue: #3A86FF;
+            --green: #10B981;
+            --dark: #0f0f1a;
+            --dark-card: #1a1a2e;
+            --dark-border: #2a2a4a;
+            --light: #f8fafc;
+            --muted: #94a3b8;
+            --radius: 16px;
+            --radius-sm: 10px;
+            --shadow: 0 4px 24px rgba(0,0,0,0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Subtle animated gradient background */
+        .bg-gradient {
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 0%, rgba(255, 0, 110, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 100%, rgba(58, 134, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(255, 217, 61, 0.05) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        h1 {
+            font-family: 'Bangers', cursive;
+            font-size: clamp(2.5rem, 10vw, 4rem);
+            background: linear-gradient(135deg, var(--yellow) 0%, var(--orange) 50%, var(--pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.02em;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: linear-gradient(135deg, var(--pink), var(--orange));
+            color: white;
+            padding: 0.4rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* Card */
+        .card {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Controls */
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-group label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--muted);
+        }
+
+        .control-group input,
+        .control-group select {
+            padding: 0.7rem 1rem;
+            border: 1px solid var(--dark-border);
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 0.95rem;
+            background: var(--dark);
+            color: var(--light);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .control-group input:focus,
+        .control-group select:focus {
+            outline: none;
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
+        }
+
+        .control-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2394a3b8' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            padding-right: 2.5rem;
+        }
+
+        /* Curse Level Meter */
+        .curse-meter {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: var(--dark);
+            border-radius: var(--radius-sm);
+            margin-bottom: 1.25rem;
+        }
+
+        .curse-meter-label {
+            font-size: 0.85rem;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        .curse-meter-bar {
+            flex: 1;
+            height: 8px;
+            background: var(--dark-border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .curse-meter-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s ease, background 0.3s ease;
+        }
+
+        .curse-meter-fill[data-level="low"] { width: 25%; background: var(--green); }
+        .curse-meter-fill[data-level="medium"] { width: 50%; background: var(--yellow); }
+        .curse-meter-fill[data-level="high"] { width: 75%; background: var(--orange); }
+        .curse-meter-fill[data-level="yawa"] { width: 100%; background: linear-gradient(90deg, var(--orange), var(--pink)); }
+
+        .curse-meter-emoji {
+            font-size: 1.25rem;
+            min-width: 1.5rem;
+            text-align: center;
+        }
+
+        /* Buttons */
+        .btn-row {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-primary {
+            flex: 1;
+            background: linear-gradient(135deg, var(--yellow), var(--orange));
+            color: var(--dark);
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 217, 61, 0.3);
+        }
+
+        .btn-primary:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: var(--dark);
+            color: var(--light);
+            border: 1px solid var(--dark-border);
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background: var(--dark-border);
+        }
+
+        .btn-icon {
+            padding: 0.8rem;
+            min-width: 44px;
+        }
+
+        /* Quick presets */
+        .presets {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .preset-btn {
+            font-size: 0.8rem;
+            padding: 0.4rem 0.8rem;
+            background: var(--dark);
+            color: var(--muted);
+            border: 1px solid var(--dark-border);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .preset-btn:hover {
+            border-color: var(--blue);
+            color: var(--light);
+        }
+
+        /* Output */
+        .output-card {
+            background: var(--light);
+            color: var(--dark);
+            min-height: 200px;
+            position: relative;
+        }
+
+        .output-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 1rem;
+        }
+
+        .output-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        .output-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .output-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .output-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            background: #f1f5f9;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            color: #64748b;
+            transition: all 0.2s;
+        }
+
+        .output-btn:hover {
+            background: #e2e8f0;
+            color: var(--dark);
+        }
+
+        .output-btn.copied {
+            background: var(--green);
+            color: white;
+        }
+
+        .output-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #1e293b;
+        }
+
+        .output-text p {
+            margin-bottom: 1.25rem;
+            text-align: left;
+        }
+
+        .output-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Loading skeleton */
+        .skeleton {
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .skeleton-line {
+            height: 1rem;
+            background: #e2e8f0;
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
+        }
+
+        .skeleton-line:nth-child(2) { width: 95%; }
+        .skeleton-line:nth-child(3) { width: 88%; }
+        .skeleton-line:nth-child(4) { width: 92%; }
+        .skeleton-line:nth-child(5) { width: 70%; margin-bottom: 1.5rem; }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: #64748b;
+        }
+
+        .empty-state-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Toast */
+        .toast-container {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .toast {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: var(--radius-sm);
+            color: var(--light);
+            font-size: 0.9rem;
+            box-shadow: var(--shadow);
+            animation: slideUp 0.3s ease;
+        }
+
+        .toast.success { border-color: var(--green); }
+        .toast.error { border-color: var(--pink); }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* API Section */
+        .api-section {
+            margin-top: 1rem;
+        }
+
+        .api-card {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .api-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background: transparent;
+            border: none;
+            color: var(--light);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .api-toggle:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .api-toggle svg {
+            transition: transform 0.2s;
+        }
+
+        .api-toggle[aria-expanded="true"] svg {
+            transform: rotate(180deg);
+        }
+
+        .api-content {
+            display: none;
+            padding: 0 1.25rem 1.25rem;
+        }
+
+        .api-content.open {
+            display: block;
+        }
+
+        .api-divider {
+            height: 1px;
+            background: var(--dark-border);
+            margin: 0 1.25rem 1.25rem;
+        }
+
+        .endpoint {
+            margin-bottom: 1.25rem;
+        }
+
+        .endpoint:last-child {
+            margin-bottom: 0;
+        }
+
+        .endpoint-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .method {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .method.get { background: var(--blue); color: white; }
+        .method.post { background: var(--orange); color: white; }
+
+        .endpoint-path {
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.9rem;
+            color: var(--light);
+        }
+
+        .endpoint code {
+            display: block;
+            background: var(--dark);
+            color: var(--muted);
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-sm);
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.8rem;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--yellow);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--orange);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 0.75rem;
+        }
+
+        /* Keyboard shortcut hints */
+        kbd {
+            display: inline-block;
+            padding: 0.15rem 0.4rem;
+            font-size: 0.7rem;
+            font-family: inherit;
+            background: var(--dark);
+            border: 1px solid var(--dark-border);
+            border-radius: 4px;
+            color: var(--muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            .card {
+                padding: 1.25rem;
+            }
+
+            .controls {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .btn-row {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .output-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+
+            .output-stats {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .presets {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="logo-icon">🔥</span>
+                <h1>BISAYA IPSUM</h1>
+            </div>
+            <p class="subtitle">Placeholder text para sa mga Bisaya, badi!</p>
+            <span class="badge">
+                <span>✨</span>
+                Tripping ra kay way lingaw
+            </span>
+        </header>
+
+        <!-- Generator Card -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">Generator Settings</span>
+            </div>
+
+            <!-- Quick Presets -->
+            <div class="presets">
+                <button class="preset-btn" onclick="applyPreset(1, 3, 'low')">Quick Clean</button>
+                <button class="preset-btn" onclick="applyPreset(3, 5, 'medium')">Standard</button>
+                <button class="preset-btn" onclick="applyPreset(5, 6, 'high')">Spicy</button>
+                <button class="preset-btn" onclick="applyPreset(3, 7, 'yawa')">Full Yawa</button>
+            </div>
+
+            <div class="controls">
+                <div class="control-group">
+                    <label for="paragraphCount">Paragraphs</label>
+                    <input type="number" id="paragraphCount" min="1" max="10" value="3">
+                </div>
+                <div class="control-group">
+                    <label for="sentenceCount">Sentences/Para</label>
+                    <input type="number" id="sentenceCount" min="1" max="15" value="5">
+                </div>
+                <div class="control-group">
+                    <label for="curseLevel">Curse Level</label>
+                    <select id="curseLevel" onchange="updateCurseMeter()">
+                        <option value="low">Low - Hinay lang</option>
+                        <option value="medium" selected>Medium - Sakto ra</option>
+                        <option value="high">High - Init na</option>
+                        <option value="yawa">YAWA! - Grabe na</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="formatSelect">Format</label>
+                    <select id="formatSelect">
+                        <option value="paragraphs">Paragraphs</option>
+                        <option value="sentences">Sentences</option>
+                        <option value="json">JSON</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Curse Meter -->
+            <div class="curse-meter">
+                <span class="curse-meter-label">Intensity:</span>
+                <div class="curse-meter-bar">
+                    <div class="curse-meter-fill" id="curseFill" data-level="medium"></div>
+                </div>
+                <span class="curse-meter-emoji" id="curseEmoji">😏</span>
+            </div>
+
+            <div class="btn-row">
+                <button class="btn btn-primary" id="generateBtn" onclick="generateIpsum()">
+                    <span>🔥</span>
+                    <span>Generate Yawa!</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Output Card -->
+        <div class="card output-card">
+            <div class="output-header">
+                <div class="output-stats">
+                    <span class="output-stat">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        <span id="wordCount">0 words</span>
+                    </span>
+                    <span class="output-stat">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <span id="charCount">0 chars</span>
+                    </span>
+                </div>
+                <div class="output-actions">
+                    <button class="output-btn" id="copyBtn" onclick="copyText()" title="Copy">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                    <button class="output-btn" onclick="downloadText()" title="Download">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="output-text" id="output">
+                <div class="empty-state">
+                    <div class="empty-state-icon">🥭</div>
+                    <p>Click "Generate Yawa!" para makakuha og Bisaya ipsum text!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- API Section -->
+        <div class="api-section">
+            <div class="api-card">
+                <button class="api-toggle" onclick="toggleApi()" aria-expanded="false" aria-controls="apiContent">
+                    <span>📡 API Documentation</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="api-divider" id="apiDivider" style="display: none;"></div>
+                <div class="api-content" id="apiContent">
+                    <div class="endpoint">
+                        <div class="endpoint-header">
+                            <span class="method get">GET</span>
+                            <span class="endpoint-path">/api/generate</span>
+                        </div>
+                        <code>GET /api/generate?paragraphs=3&curseLevel=medium&format=json</code>
+                    </div>
+
+                    <div class="endpoint">
+                        <div class="endpoint-header">
+                            <span class="method get">GET</span>
+                            <span class="endpoint-path">/api/generate/sentence</span>
+                        </div>
+                        <code>GET /api/generate/sentence?curseLevel=yawa</code>
+                    </div>
+
+                    <div class="endpoint">
+                        <div class="endpoint-header">
+                            <span class="method get">GET</span>
+                            <span class="endpoint-path">/api/words</span>
+                        </div>
+                        <code>GET /api/words</code>
+                    </div>
+
+                    <div class="endpoint">
+                        <div class="endpoint-header">
+                            <span class="method post">POST</span>
+                            <span class="endpoint-path">/api/generate</span>
+                        </div>
+                        <code>{
+  "paragraphs": 5,
+  "curseLevel": "high",
+  "sentencesPerParagraph": { "min": 5, "max": 5 }
+}</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Made with 💛 for all the Triple B Motherfuckers</p>
+            <div class="footer-links">
+                <a href="https://github.com/jacocanete/bisaya-ipsum" target="_blank">GitHub</a>
+                <span>•</span>
+                <span>Built with Bun 🥟 + Hono</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script>
+        // ===============================
+        // UI FUNCTIONS
+        // ===============================
+        const curseEmojis = { low: '😇', medium: '😏', high: '😈', yawa: '🔥' };
+
+        function updateCurseMeter() {
+            const level = document.getElementById('curseLevel').value;
+            document.getElementById('curseFill').setAttribute('data-level', level);
+            document.getElementById('curseEmoji').textContent = curseEmojis[level];
+        }
+
+        function updateStats(text) {
+            const words = text.trim().split(/\s+/).filter(w => w).length;
+            const chars = text.length;
+            document.getElementById('wordCount').textContent = `${words} words`;
+            document.getElementById('charCount').textContent = `${chars} chars`;
+        }
+
+        function showLoading() {
+            document.getElementById('output').innerHTML = `
+                <div class="skeleton">
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line"></div>
+                </div>
+            `;
+        }
+
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `
+                <span>${type === 'success' ? '✓' : '✕'}</span>
+                <span>${message}</span>
+            `;
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        function applyPreset(paragraphs, sentences, curseLevel) {
+            document.getElementById('paragraphCount').value = paragraphs;
+            document.getElementById('sentenceCount').value = sentences;
+            document.getElementById('curseLevel').value = curseLevel;
+            updateCurseMeter();
+            generateIpsum();
+        }
+
+        function toggleApi() {
+            const btn = document.querySelector('.api-toggle');
+            const content = document.getElementById('apiContent');
+            const divider = document.getElementById('apiDivider');
+            const isOpen = btn.getAttribute('aria-expanded') === 'true';
+            btn.setAttribute('aria-expanded', !isOpen);
+            content.classList.toggle('open', !isOpen);
+            divider.style.display = isOpen ? 'none' : 'block';
+        }
+
+        // ===============================
+        // MAIN FUNCTIONS
+        // ===============================
+        let generatedText = '';
+
+        async function generateIpsum() {
+            const paragraphs = parseInt(document.getElementById('paragraphCount').value) || 3;
+            const sentenceCount = parseInt(document.getElementById('sentenceCount').value) || 5;
+            const curseLevel = document.getElementById('curseLevel').value;
+            const format = document.getElementById('formatSelect').value;
+            const output = document.getElementById('output');
+            const btn = document.getElementById('generateBtn');
+
+            btn.disabled = true;
+            btn.innerHTML = '<span>⏳</span><span>Generating...</span>';
+            showLoading();
+
+            try {
+                const response = await fetch('/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        paragraphs,
+                        curseLevel,
+                        sentencesPerParagraph: { min: sentenceCount, max: sentenceCount }
+                    })
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    generatedText = data.data.text;
+
+                    if (format === 'json') {
+                        output.innerHTML = `<pre style="white-space: pre-wrap; font-family: Monaco, Consolas, monospace; font-size: 0.85rem;">${JSON.stringify(data.data, null, 2)}</pre>`;
+                    } else if (format === 'sentences') {
+                        const sentences = data.data.paragraphs.flatMap(p => p.match(/[^.!?]+[.!?]+/g) || []);
+                        output.innerHTML = sentences.map(s => `<p style="margin-bottom: 0.5rem;">${s.trim()}</p>`).join('');
+                    } else {
+                        output.innerHTML = data.data.paragraphs.map(p => `<p>${p}</p>`).join('');
+                    }
+                    updateStats(generatedText);
+                } else {
+                    throw new Error(data.error || 'Failed to generate');
+                }
+            } catch (error) {
+                console.error('API Error:', error);
+                output.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">😢</div>
+                        <p>Pasensya na, bay! Naay problema sa API.</p>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem;">${error.message}</p>
+                    </div>
+                `;
+                showToast('API error, bay! Try again.', 'error');
+            }
+
+            btn.disabled = false;
+            btn.innerHTML = '<span>🔥</span><span>Generate Yawa!</span>';
+        }
+
+        function copyText() {
+            if (!generatedText) {
+                showToast('Wala pay text, bay! Generate una.', 'error');
+                return;
+            }
+
+            navigator.clipboard.writeText(generatedText).then(() => {
+                const btn = document.getElementById('copyBtn');
+                btn.classList.add('copied');
+                showToast('Nakopya na, bay!');
+                setTimeout(() => btn.classList.remove('copied'), 2000);
+            });
+        }
+
+        function downloadText() {
+            if (!generatedText) {
+                showToast('Wala pay text, bay! Generate una.', 'error');
+                return;
+            }
+
+            const blob = new Blob([generatedText], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'bisaya-ipsum.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('Na-download na, bay!');
+        }
+
+        // Initialize
+        updateCurseMeter();
+        generateIpsum();
+    </script>
+</body>
+</html>
